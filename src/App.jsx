@@ -1,13 +1,14 @@
-import Testimonials from "./sections/Testimonials";
+// import Testimonials from "./sections/Testimonials";
 import Footer from "./sections/Footer";
 import Contact from "./sections/Contact";
 import TechStack from "./sections/TechStack";
 import Experience from "./sections/Experience";
+import  Timeline from "./sections/Timeline";
 import Hero from "./sections/Hero";
 import ShowcaseSection from "./sections/ShowcaseSection";
 import LogoShowcase from "./sections/LogoShowcase";
 import FeatureCards from "./sections/FeatureCards";
-import Navbar from "./components/NavBar";
+import Navbar from "./components/NavBar";     
 
 const App = () => (
   <>
@@ -17,8 +18,9 @@ const App = () => (
     <LogoShowcase />
     <FeatureCards />
     <Experience />
+    <Timeline />
     <TechStack />
-    <Testimonials />
+    {/* <Testimonials /> */}
     <Contact />
     <Footer />
   </>

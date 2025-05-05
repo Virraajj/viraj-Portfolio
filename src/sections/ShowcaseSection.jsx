@@ -2,33 +2,27 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import GlowCard from "../components/GlowCard"; // Import the GlowCard component
 
 gsap.registerPlugin(ScrollTrigger);
 
 const AppShowcase = () => {
   const sectionRef = useRef(null);
-  const rydeRef = useRef(null);
-  const libraryRef = useRef(null);
-  const ycDirectoryRef = useRef(null);
+  const projectRefs = useRef([]);
 
   useGSAP(() => {
-    // Animation for the main section
+    // Section fade-in
     gsap.fromTo(
       sectionRef.current,
       { opacity: 0 },
       { opacity: 1, duration: 1.5 }
     );
 
-    // Animations for each app showcase
-    const cards = [rydeRef.current, libraryRef.current, ycDirectoryRef.current];
-
-    cards.forEach((card, index) => {
+    // Animate each project card on scroll
+    projectRefs.current.forEach((card, index) => {
       gsap.fromTo(
         card,
-        {
-          y: 50,
-          opacity: 0,
-        },
+        { y: 50, opacity: 0 },
         {
           y: 0,
           opacity: 1,
@@ -43,44 +37,85 @@ const AppShowcase = () => {
     });
   }, []);
 
+  const projects = [
+    {
+      imgPath: "/projects/blur/major.jpeg",
+      alt: "Avatar Interface",
+      title: "Avatar-based Sign Language Video Generation",
+      testimonial:
+        "Inclusive deep learning-powered platform translating speech to sign language for the hearing impaired.",
+      rating: 5, // Added for GlowCard consistency
+    },
+    {
+      imgPath: "/projects/blur/learning.png",
+      alt: "Learning Platform",
+      title: "Personalized Online Learning Platform",
+      testimonial: "A customized education solution tailored to student needs.",
+      rating: 5,
+    },
+    {
+      imgPath: "/projects/blur/vqa.jpg",
+      alt: "VQA System",
+      title: "Visual Question Answering System",
+      testimonial: "AI answers questions by analyzing image content using deep vision models.",
+      rating: 5,
+    },
+    {
+      imgPath: "/projects/blur/netflix.png",
+      alt: "Netflix Clone",
+      title: "Netflix Clone & Music Recommender",
+      testimonial:
+        "A Netflix UI replica with a song recommender system using Spotify API based on user preferences.",
+      rating: 5,
+    },
+    {
+      imgPath: "/projects/blur/smartflow.jpeg",
+      alt: "SmartFlow AI",
+      title: "SmartFlow AI-driven Traffic System",
+      testimonial:
+        "Real-time YOLOv8-powered traffic signal optimization system for smarter urban mobility.",
+      rating: 5,
+    },
+    {
+      imgPath: "/projects/blur/image.png",
+      alt: "Online Proctoring",
+      title: "Online Proctoring System using YOLOv7",
+      testimonial:
+        "An AI-based exam proctoring system to monitor and flag anomalies using object detection.",
+      rating: 5,
+    },
+  ];
+
   return (
-    <div id="work" ref={sectionRef} className="app-showcase">
-      <div className="w-full">
-        <div className="showcaselayout">
-          <div ref={rydeRef} className="first-project-wrapper">
-            <div className="image-wrapper">
-              <img src="/images/project1.png" alt="Ryde App Interface" />
-            </div>
-            <div className="text-content">
-              <h2>
-                On-Demand Rides Made Simple with a Powerful, User-Friendly App
-                called Ryde
-              </h2>
-              <p className="text-white-50 md:text-xl">
-                An app built with React Native, Expo, & TailwindCSS for a fast,
-                user-friendly experience.
-              </p>
-            </div>
-          </div>
+    <div ref={sectionRef} id="work" className="relative bg-black py-16">
+      <div className="relative max-w-7xl mx-auto px-4">
+        <h2 className="text-4xl font-bold text-white text-center mb-12">
+          Featured Projects
+        </h2>
 
-          <div className="project-list-wrapper overflow-hidden">
-            <div className="project" ref={libraryRef}>
-              <div className="image-wrapper bg-[#FFEFDB]">
-                <img
-                  src="/images/project2.png"
-                  alt="Library Management Platform"
-                />
-              </div>
-              <h2>The Library Management Platform</h2>
-            </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              ref={(el) => (projectRefs.current[index] = el)}
+              className="w-full"
+            >
+             <GlowCard card={project}>
+    <div className="text-white text-center p-4 h-[400px] flex flex-col justify-between">
+      <div>
+        <img
+          src={project.imgPath}
+          alt={project.alt}
+          className="mx-auto mb-4 rounded-md h-60 w-full object-contain"
+        />
+        <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+        <p className="text-sm text-gray-300">{project.testimonial}</p>
+      </div>
+    </div>
+  </GlowCard>
 
-            <div className="project" ref={ycDirectoryRef}>
-              <div className="image-wrapper bg-[#FFE7EB]">
-                <img src="/images/project3.png" alt="YC Directory App" />
-              </div>
-              <h2>YC Directory - A Startup Showcase App</h2>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

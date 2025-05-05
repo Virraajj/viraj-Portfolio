@@ -8,6 +8,10 @@ const navLinks = [
     link: "#experience",
   },
   {
+    name: "Timeline",
+    link: "#timeline",
+  },
+  {
     name: "Skills",
     link: "#skills",
   },
@@ -29,45 +33,46 @@ const words = [
 ];
 
 const counterItems = [
-  { value: 15, suffix: "+", label: "Years of Experience" },
-  { value: 200, suffix: "+", label: "Satisfied Clients" },
-  { value: 108, suffix: "+", label: "Completed Projects" },
-  { value: 90, suffix: "%", label: "Client Retention Rate" },
+    { value: 3, suffix: "+", label: "Industry Internships" },
+    { value: 30, suffix: "+", label: "Certifications Earned" },
+    { value: 10, suffix: "+", label: "Technical Projects" },
+    { value: 95, suffix: "%", label: "Learning Consistency Score" } // Or 'Course Completion Rate'
+  
 ];
 
 const logoIconsList = [
   {
-    imgPath: "/images/logos/company-logo-1.png",
+    imgPath: "/projects/tech/aws.svg",
   },
   {
-    imgPath: "/images/logos/company-logo-2.png",
+    imgPath: "/projects/tech/gsap.svg",
   },
   {
-    imgPath: "/images/logos/company-logo-3.png",
+    imgPath: "/projects/tech/mongo.svg",
   },
   {
-    imgPath: "/images/logos/company-logo-4.png",
+    imgPath: "/projects/tech/tailwind.svg",
   },
   {
-    imgPath: "/images/logos/company-logo-5.png",
+    imgPath: "/projects/tech/typescript.svg",
   },
   {
-    imgPath: "/images/logos/company-logo-6.png",
+    imgPath: "/projects/tech/Streamlit.svg",
   },
   {
-    imgPath: "/images/logos/company-logo-7.png",
+    imgPath: "/projects/tech/python.svg",
   },
   {
-    imgPath: "/images/logos/company-logo-8.png",
+    imgPath: "/projects/tech/react.svg",
   },
   {
-    imgPath: "/images/logos/company-logo-9.png",
+    imgPath: "/projects/tech/angular.svg",
   },
   {
-    imgPath: "/images/logos/company-logo-10.png",
+    imgPath: "/projects/tech/next.svg",
   },
   {
-    imgPath: "/images/logos/company-logo-11.png",
+    imgPath: "/projects/tech/npm.svg",
   },
 ];
 
@@ -88,6 +93,9 @@ const abilities = [
     desc: "Making sure projects are completed on schedule, with quality & attention to detail.",
   },
 ];
+
+
+
 
 const techStackImgs = [
   {
@@ -147,39 +155,39 @@ const techStackIcons = [
 
 const expCards = [
   {
-    review: "Adrian brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
-    imgPath: "/images/exp1.png",
-    logoPath: "/images/logo1.png",
-    title: "Frontend Developer",
-    date: "January 2023 - Present",
+    review: "Viraj’s work on BizDectory's mobile app brought a high level of quality and efficiency. He delivered solutions that enhanced our AI-ML experience & meet our product goals.",
+    imgPath: "/timeline/prospera.png",
+    logoPath: "/timeline/prospera.png",
+    title: "SDE Intern",
+    date: "January 2025 - Present",
     responsibilities: [
-      "Developed and maintained user-facing features for the Hostinger website.",
-      "Collaborated closely with UI/UX designers to ensure seamless user experiences.",
-      "Optimized web applications for maximum speed and scalability.",
+      "Developed a cross-platform mobile app using React Native to manage location-based profiles and render maps.",
+      "Implemented user authentication, geospatial queries, and data management using Supabase and PostGIS.",
+      "Researched and built a Flask API for dynamic diagram generation using LLMs and integrated OpenCV for visual output.",
     ],
   },
   {
-    review: "Adrian’s contributions to Docker's web applications have been outstanding. He approaches challenges with a problem-solving mindset.",
-    imgPath: "/images/exp2.png",
-    logoPath: "/images/logo2.png",
+    review: "Viraj’s contributions to SAP CDC applications have been outstanding. He approaches challenges with a problem-solving mindset.",
+    imgPath: "/timeline/colgate.png",
+    logoPath: "/timeline/colgate.png",
     title: "Full Stack Developer",
-    date: "June 2020 - December 2023",
+    date: "July 2024 - December 2024",
     responsibilities: [
-      "Led the development of Docker's web applications, focusing on scalability.",
-      "Worked with backend engineers to integrate APIs seamlessly with the frontend.",
+      "Led the UI development of scalable, localized web applications and child sites for Colgate's global product lines, ensuring consistency and responsiveness across regions.",
+      "Collaborated closely with backend teams to integrate APIs seamlessly into multilingual registration forms, login modules, and interactive web experiences.",
       "Contributed to open-source projects that were used with the Docker ecosystem.",
     ],
   },
   {
-    review: "Adrian’s work on Appwrite’s mobile app brought a high level of quality and efficiency. He delivered solutions that enhanced our mobile experience & meet our product goals.",
-    imgPath: "/images/exp3.png",
-    logoPath: "/images/logo3.png",
-    title: "React Native Developer",
-    date: "March 2019 - May 2020",
+    review: "Viraj's blend of creativity and technical skill significantly enhanced our frontend performance. His contributions were instrumental in delivering faster, more efficient user experiences across our digital platforms.",
+    imgPath: "/timeline/tridit.jpeg",
+    logoPath: "/timeline/tridit.jpeg",
+    title: "AEM Trainee",
+    date: "April 2024 - June 2024",
     responsibilities: [
-      "Built cross-platform mobile apps using React Native, integrating with Appwrite's backend services.",
-      "Improved app performance and user experience through code optimization and testing.",
-      "Coordinated with the product team to implement features based on feedback.",
+      "Developed and maintained scalable components and templates within Adobe Experience Manager",
+      "Worked in close collaboration with UX/UI teams to translate design mockups into responsive, author-friendly AEM components.",
+      "Optimized AEM-based websites for performance, ensuring fast load times.",
     ],
   },
 ];
@@ -201,15 +209,15 @@ const expLogos = [
 
 const testimonials = [
   {
-    name: "Esther Howard",
-    mentions: "@estherhoward",
+    name: "Kshitija Parjane Ma'am",
+    mentions: "linkedin.com/in/kshitija-p-0b39a2184",
     review:
-      "I can’t say enough good things about Adrian. He was able to take our complex project requirements and turn them into a seamless, functional website. His problem-solving abilities are outstanding.",
+      "Viraj has been an exceptional student when I was his Trainer at MITAOE. He's indeed a very fast learner. Always has fun while learning and able to manage the tasks efficiently as well.",
     imgPath: "/images/client1.png",
   },
   {
-    name: "Wade Warren",
-    mentions: "@wadewarren",
+    name: "Mrs. Pranali Lokhande Ma'am",
+    mentions: "linkedin.com/in/pranali-lokhande-246340ab",
     review:
       "Working with Adrian was a fantastic experience. He transformed our outdated website into a modern, user-friendly platform. His attention to detail and commitment to quality are unmatched. Highly recommend him for any web dev projects.",
     imgPath: "/images/client3.png",
