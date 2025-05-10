@@ -89,7 +89,7 @@ const AppShowcase = () => {
       testimonial:
         "An AI-based exam proctoring system to monitor and flag anomalies using object detection.",
       rating: 5,
-      githubLink: "", // No valid link
+      githubLink: "https://github.com/Virraajj/Online-Proctoring", // No valid link
     },
   ];
 
