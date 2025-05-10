@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import GlowCard from "../components/GlowCard"; // Import the GlowCard component
+import { FaGithub } from "react-icons/fa";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -44,21 +45,24 @@ const AppShowcase = () => {
       title: "Avatar-based Sign Language Video Generation",
       testimonial:
         "Inclusive deep learning-powered platform translating speech to sign language for the hearing impaired.",
-      rating: 5, // Added for GlowCard consistency
+      rating: 5,
+      githubLink: "https://github.com/Sachin220/ISL",
     },
     {
-      imgPath: "/projects/blur/learning.png",
+      imgPath: "/video/online.mp4",
       alt: "Learning Platform",
       title: "Personalized Online Learning Platform",
       testimonial: "A customized education solution tailored to student needs.",
       rating: 5,
+      githubLink: "https://github.com/Virraajj/Online-personalized-learning",
     },
     {
-      imgPath: "/projects/blur/vqa.jpg",
+      imgPath: "/video/vqa.mp4",
       alt: "VQA System",
       title: "Visual Question Answering System",
       testimonial: "AI answers questions by analyzing image content using deep vision models.",
       rating: 5,
+      githubLink: "https://github.com/Virraajj/VQAModel",
     },
     {
       imgPath: "/projects/blur/netflix.png",
@@ -67,24 +71,32 @@ const AppShowcase = () => {
       testimonial:
         "A Netflix UI replica with a song recommender system using Spotify API based on user preferences.",
       rating: 5,
+      githubLink: "https://github.com/Virraajj/MOVIE-RECOMMENDATION-SYSTEM-",
     },
     {
-      imgPath: "/projects/blur/smartflow.jpeg",
+      imgPath: "/video/smartflow.mp4",
       alt: "SmartFlow AI",
       title: "SmartFlow AI-driven Traffic System",
       testimonial:
         "Real-time YOLOv8-powered traffic signal optimization system for smarter urban mobility.",
       rating: 5,
+      githubLink: "https://github.com/Sachin220/TrafficSignalPrediction",
     },
     {
-      imgPath: "/projects/blur/image.png",
+      imgPath: "/video/proctoring.mp4",
       alt: "Online Proctoring",
       title: "Online Proctoring System using YOLOv7",
       testimonial:
         "An AI-based exam proctoring system to monitor and flag anomalies using object detection.",
       rating: 5,
+      githubLink: "", // No valid link
     },
   ];
+
+  // Function to check if the path is a video file
+  const isVideo = (path) => {
+    return /\.(mp4|webm|ogg)$/i.test(path);
+  };
 
   return (
     <div ref={sectionRef} id="work" className="relative bg-black py-16">
@@ -100,20 +112,76 @@ const AppShowcase = () => {
               ref={(el) => (projectRefs.current[index] = el)}
               className="w-full"
             >
-             <GlowCard card={project}>
-    <div className="text-white text-center p-4 h-[400px] flex flex-col justify-between">
-      <div>
-        <img
-          src={project.imgPath}
-          alt={project.alt}
-          className="mx-auto mb-4 rounded-md h-60 w-full object-contain"
-        />
-        <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-        <p className="text-sm text-gray-300">{project.testimonial}</p>
-      </div>
-    </div>
-  </GlowCard>
-
+              {/* Wrap GlowCard in an anchor tag if a valid githubLink exists */}
+              {project.githubLink && project.githubLink !== "" ? (
+                <a
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <GlowCard card={project}>
+                    <div className="text-white text-center p-4 h-[440px] flex flex-col justify-between">
+                      <div>
+                        {isVideo(project.imgPath) ? (
+                          <video
+                            src={project.imgPath}
+                            alt={project.alt}
+                            className="mx-auto mb-4 rounded-md h-60 w-full object-contain"
+                            controls
+                            muted
+                            autoPlay
+                            loop
+                            playbackRate={2}
+                          />
+                        ) : (
+                          <img
+                            src={project.imgPath}
+                            alt={project.alt}
+                            className="mx-auto mb-4 rounded-md h-60 w-full object-contain"
+                          />
+                        )}
+                        <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                        <p className="text-sm text-gray-300">{project.testimonial}</p>
+                      </div>
+                      <div className="mt-4 flex items-center justify-center text-blue-400 hover:text-white transition duration-200">
+                        <FaGithub className="mr-2" size={20} />
+                        <span className="underline">View on GitHub</span>
+                      </div>
+                    </div>
+                  </GlowCard>
+                </a>
+              ) : (
+                <GlowCard card={project}>
+                  <div className="text-white text-center p-4 h-[440px] flex flex-col justify-between">
+                    <div>
+                      {isVideo(project.imgPath) ? (
+                        <video
+                          src={project.imgPath}
+                          alt={project.alt}
+                          className="mx-auto mb-4 rounded-md h-60 w-full object-contain"
+                          controls
+                          muted
+                          autoPlay
+                          loop
+                          playbackRate={1.5}
+                        />
+                      ) : (
+                        <img
+                          src={project.imgPath}
+                          alt={project.alt}
+                          className="mx-auto mb-4 rounded-md h-60 w-full object-contain"
+                        />
+                      )}
+                      <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                      <p className="text-sm text-gray-300">{project.testimonial}</p>
+                    </div>
+                    <div className="mt-4 flex items-center justify-center text-gray-500">
+                      <span>GitHub not available</span>
+                    </div>
+                  </div>
+                </GlowCard>
+              )}
             </div>
           ))}
         </div>
